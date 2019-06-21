@@ -39,10 +39,10 @@ func main() {
 	<-done
 
 	// channel Direction
-	pings:= make(chan string, 1) 
+	pings := make(chan string, 1)
 	pongs := make(chan string, 1)
 
-	// param msg akan memasukan value string ke pings 
+	// param msg akan memasukan value string ke pings
 	ping := func(pings chan<- string, msg string) {
 		pings <- msg
 	}
@@ -55,6 +55,6 @@ func main() {
 		pongs <- msg
 	}
 	ping(pings, "passed message") // pings <- "passed message"
-	pong(pings, pongs) // pongs <- pings("passed message")
-	fmt.Println(<-pongs) // -> passed message
+	pong(pings, pongs)            // pongs <- pings("passed message")
+	fmt.Println(<-pongs)          // -> passed message
 }
