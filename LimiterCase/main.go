@@ -39,6 +39,6 @@ func main() {
 	close(burstyRequests)
 	for req := range burstyRequests {
 		<-burstyLimiter
-		fmt.Println("request", req, time.Now())
+		fmt.Println("request2", req, time.Now())
 	}
 }
