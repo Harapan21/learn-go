@@ -57,4 +57,16 @@ func main() {
 	ping(pings, "passed message") // pings <- "passed message"
 	pong(pings, pongs)            // pongs <- pings("passed message")
 	fmt.Println(<-pongs)          // -> passed message
+
+	// range over channel
+	queue := make(chan string, 2)
+	queue <- "one" //queue("one")
+	queue <- "two" //queue("one","two")
+	fmt.Println(isEnough)
+	close(queue)
+	// pengulangan mengambil value di queue
+	for elem := range queue {
+		fmt.Println(elem)
+	}
+
 }
