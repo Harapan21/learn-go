@@ -9,7 +9,7 @@ var (
 	result int
 )
 
-func testPlus(t *testing.T) {
+func TestPlus(t *testing.T) {
 	a = 1
 	b = 2
 	result = 3
