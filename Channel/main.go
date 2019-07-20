@@ -60,13 +60,18 @@ func main() {
 
 	// range over channel
 	queue := make(chan string, 2)
-	queue <- "one" //queue("one")
-	queue <- "two" //queue("one","two")
-	fmt.Println(isEnough)
-	close(queue)
+	go HandleQuee(queue)
 	// pengulangan mengambil value di queue
 	for elem := range queue {
 		fmt.Println(elem)
 	}
 
+}
+
+// HandleQuee function receive channel
+func HandleQuee(c chan<- string) {
+	c <- "one" //queue("one")
+	c <- "two" //queue("one","two")
+	fmt.Println("isEnough")
+	close(c)
 }

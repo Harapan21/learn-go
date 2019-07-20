@@ -28,6 +28,7 @@ func main() {
 			}
 		}()
 	}
+
 	for w := 0; w < 10; w++ {
 		go func() {
 			for {
@@ -41,6 +42,7 @@ func main() {
 			}
 		}()
 	}
+
 	time.Sleep(time.Second)
 	readOpsFinal := atomic.LoadUint64(&readOps)
 	fmt.Println("readOps", readOpsFinal)

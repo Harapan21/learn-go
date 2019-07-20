@@ -8,6 +8,10 @@ func main() {
 	messages := make(chan string)
 	signals := make(chan bool)
 
+	// go func(messages chan<- string) {
+	// 	messages <- "this is messae for messages channel"
+	// }(messages)
+
 	select {
 	case msg := <-messages:
 		fmt.Println("received message", msg)
@@ -15,10 +19,11 @@ func main() {
 		fmt.Println("no message received")
 	}
 
-	msg := "hi"
+	msg1 := "hi"
+
 	select {
-	case messages <- msg:
-		fmt.Println("sent message", msg)
+	case messages <- msg1:
+		fmt.Println("sent message", <-messages)
 	default:
 		fmt.Println("no message sent")
 	}
